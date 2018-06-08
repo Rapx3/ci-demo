@@ -6,8 +6,9 @@
     <groupId>nc.indus</groupId>
     <artifactId>ci-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>ci-demo.main</name>
 
-    <name>ci-demo</name>
     <description>Demo project for Spring Boot</description>
 
     <modules>
