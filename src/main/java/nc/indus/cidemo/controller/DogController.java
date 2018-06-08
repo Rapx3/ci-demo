@@ -15,10 +15,7 @@ public class DogController {
 
 	@Autowired
 	DogService dogService;
-
-	/*
-	This returns a dog
-	 */
+	
 	@GetMapping("/{name}")
 	public ResponseEntity<Dog> getDogByName(@PathVariable("name") String name) {
 		return ResponseEntity.ok(dogService.getDogByName(name));
