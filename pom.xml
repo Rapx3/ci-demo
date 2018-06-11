@@ -3,30 +3,36 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>nc.indus</groupId>
-    <artifactId>ci-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>ci-demo</name>
-    <description>Demo project for Spring Boot</description>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
+        <version>2.0.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <groupId>nc.indus</groupId>
+    <artifactId>ci-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>ci-demo.main</name>
+
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>ci-demo-dao</module>
+        <module>ci-demo-business</module>
+        <module>ci-demo-rest</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
-        <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
-        <junit.platform.version>1.1.0</junit.platform.version>
-        <junit.jupiter.version>5.1.0</junit.jupiter.version>
-        <maven.surefire.version>2.19.1</maven.surefire.version>
+        <junit.platform.surefire.provider.version>1.2.0</junit.platform.surefire.provider.version>
+        <junit.jupiter.version>5.2.0</junit.jupiter.version>
+        <maven.surefire.version>2.21.0</maven.surefire.version>
+        <sonar.coverage.exclusions>**/CiDemoApplication.java</sonar.coverage.exclusions>
     </properties>
 
     <build>
@@ -39,24 +45,11 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit.platform.version}</version>
+                        <version>${junit.platform.surefire.provider.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring.boot.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <dependencyManagement>
@@ -65,14 +58,27 @@
                 <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <!--   <version>${project.parent.version}</version>-->
             </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-jdk8</artifactId>
                 <version>${org.mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nc.indus</groupId>
+                <artifactId>ci-demo-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nc.indus</groupId>
+                <artifactId>ci-demo-business</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nc.indus</groupId>
+                <artifactId>ci-demo-rest</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -91,12 +97,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <!--<exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>-->
         </dependency>
 
         <!-- JUnit dependencies -->

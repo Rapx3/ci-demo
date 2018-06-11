@@ -1,7 +1,7 @@
-package nc.indus.cidemo.controller;
+package nc.indus.ci.demo.controller;
 
-import nc.indus.cidemo.business.dto.Dog;
-import nc.indus.cidemo.business.services.DogService;
+import nc.indus.ci.demo.dto.Dog;
+import nc.indus.ci.demo.service.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

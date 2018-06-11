@@ -1,4 +1,4 @@
-package nc.indus.cidemo;
+package nc.indus.ci.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
